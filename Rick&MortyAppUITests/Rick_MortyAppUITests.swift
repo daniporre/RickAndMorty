@@ -2,7 +2,7 @@
 //  Rick_MortyAppUITests.swift
 //  Rick&MortyAppUITests
 //
-//  Created by ABAMobile-Dani on 7/6/23.
+//  Created by Dani on 7/6/23.
 //
 
 import XCTest
