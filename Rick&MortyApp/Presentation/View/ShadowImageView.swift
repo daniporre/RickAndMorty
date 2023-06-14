@@ -29,7 +29,7 @@ struct ShadowImageView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: 350, alignment: .top)
         .cornerRadius(Constants.cornerRadiusImage)
-        .padding(20)
+        .padding(Constants.imagePadding)
         .shadow(color: Color.myColors().RMPinkColor.opacity(0.5),
                 radius: 15,
                 x: 0,
@@ -47,6 +47,8 @@ struct ShadowImageView: View {
                         )
                     HStack (alignment: .bottom) {
                         Group {
+                            CharacterStatusView(characterStatus: character.status)
+                                .padding(.bottom, Constants.statusPadding)
                             Text(character.species)
                                 .font(.title)
                             Text("-")
@@ -73,12 +75,9 @@ struct ShadowImageView: View {
     private enum Constants {
         static let cornerRadiusImage: CGFloat = 16
         static let cardPadding: CGFloat = 42
+        static let statusPadding: CGFloat = 12
+        static let imagePadding: CGFloat = 20
     }
 }
-
-private enum Constants {
-    static let cornerRadiusImage: CGFloat = 16
-}
-
 
 

@@ -29,8 +29,8 @@ struct HomeView: View {
                         Button {
                             viewModel.getCharacters(isMoreLoading: false)
                         } label: {
-                            Text("Try Again")
-                                .padding(40)
+                            Text(Constants.tryAgain)
+                                .padding(Constants.tryAgainPadding)
                         }
 
                     } else {
@@ -53,7 +53,7 @@ struct HomeView: View {
                                         viewModel.currentPage += 1
                                         viewModel.getCharacters(isMoreLoading: true)
                                     } label: {
-                                        Label("Load more", systemImage: "arrow.counterclockwise")
+                                        Label(Constants.loadMore, systemImage: "arrow.counterclockwise")
                                             .padding(.top, Constants.leadingPaddingImage)
                                             .font(
                                                 .title3
@@ -76,11 +76,11 @@ struct HomeView: View {
                 }
                 .frame(maxWidth: .infinity)
             }
-            .navigationBarTitle("Rick and Morty", displayMode: .large)
+            .navigationBarTitle(Constants.navigationBarTitle, displayMode: .large)
             .toolbarBackground(.visible, for: .navigationBar)
             .searchable(text: $searchText)
             .refreshable(action: {
-                viewModel.getCharacters(isMoreLoading: false)
+                viewModel.reload(isMoreLoading: false)
             })
             .onChange(of: searchText) { searchText in
                 if !searchText.isEmpty {
@@ -96,7 +96,7 @@ struct HomeView: View {
                             self.isModal = false
                         }) {
                             HStack {
-                                Text("Navigation")
+                                Text(Constants.menuNavigation)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 if !self.isModal {
                                     SwiftUI.Image(systemName: "checkmark.circle.fill")
@@ -107,7 +107,7 @@ struct HomeView: View {
                             self.isModal = true
                         }) {
                             HStack {
-                                Text("Sheet")
+                                Text(Constants.menuSheet)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 if self.isModal {
                                     SwiftUI.Image(systemName: "checkmark.circle.fill")
@@ -136,9 +136,13 @@ struct HomeView: View {
 }
 
 private enum Constants {
-    static let imageWidth: CGFloat = 80
-    static let imageHeight: CGFloat = 80
+    static let navigationBarTitle: String = "Rick and Morty"
+    static let menuNavigation: String = "Navigation"
+    static let menuSheet: String = "Sheet"
+    static let loadMore: String = "Load More"
+    static let tryAgain: String = "Try Again"
     static let leadingPaddingImage: CGFloat = 20
+    static let tryAgainPadding: CGFloat = 40
 }
 
 struct MainView_Previews: PreviewProvider {

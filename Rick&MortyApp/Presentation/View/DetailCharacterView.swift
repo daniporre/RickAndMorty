@@ -41,27 +41,9 @@ struct DetailCharacterView: View {
                     )
                     .cornerRadius(Constants.imageSize / 2)
                     .padding(.top, (isSheet) ? Constants.topImagePadding : 0)
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text(character.name)
-                            .font(
-                                .title
-                                .weight(.bold)
-                            )
-                        Text(character.gender)
-                            .padding(.bottom, Constants.paddingNameBottom)
-                            .foregroundColor(colors.RMCyanColor)
-                            .font(
-                                .title2
-                                .weight(.bold)
-                            )
-                        
-                    }
-                    Spacer()
-                    
-                }
-                .padding(Constants.hsPadding)
-                .frame(maxHeight: Constants.headerContainerSize)
+                CharacterMiniInfoView(character: character)
+                    .padding(Constants.hsPadding)
+                    .frame(maxHeight: Constants.headerContainerSize)
                 
                 DetailListView(data: viewModel.dataList, listTitle: "Character information")
             }
